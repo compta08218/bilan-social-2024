@@ -71,24 +71,32 @@
             <h2 class="text-2xl font-bold text-center text-gray-800 mb-6">Le Futur : Objectifs & Plan d'Action 2025</h2>
             <div class="space-y-4 max-w-4xl mx-auto">
                 <div class="flex items-start p-4 bg-yellow-50 rounded-lg border-l-4 border-yellow-500">
-                    <i data-lucide="heart-pulse" class="h-6 w-6 text-yellow-700 mr-4 mt-1 flex-shrink-0"></i>
+                    <i data-lucide="search" class="h-6 w-6 text-yellow-700 mr-4 mt-1 flex-shrink-0"></i>
                     <div>
-                        <h5 class="font-bold text-yellow-800">Priorité 1 : Fidélisation & Stabilité</h5>
-                        <p class="text-gray-700">**Objectif :** Réduire le turn-over de 50% à moins de 15%.<br> **Actions :** Mettre en place des entretiens de départ systématiques, revoir le parcours d'intégration des nouvelles équipes, et lancer des enquêtes de satisfaction (pulse surveys).</p>
+                        <h5 class="font-bold text-yellow-800">Priorité 1 : Comprendre les Causes du Turn-Over pour Mieux Fidéliser</h5>
+                        <p class="text-gray-700"><strong>Objectif :</strong> Réduire le turn-over de 50% à moins de 15% en 2025.<br> 
+                        <strong>Piste d'amélioration pour 2025 :</strong> L'enjeu n'est pas seulement de remplacer les départs, mais de **comprendre en profondeur les raisons** qui les motivent. Avec l'implication forte de la direction et de l'encadrement, nous allons lancer un diagnostic précis basé sur : <br>
+                        • Des **entretiens de départ qualitatifs** pour collecter un feedback honnête et exploitable.<br>
+                        • Une **analyse du parcours d'intégration** avec les équipes récemment arrivées pour identifier les points de friction.<br>
+                        • La mise en place de **points d'écoute réguliers** pour prendre le pouls de l'organisation et agir de manière préventive.<br>
+                        Le résultat de ce diagnostic sera la base de notre plan d'action 2025.
+                        </p>
                     </div>
                 </div>
                 <div class="flex items-start p-4 bg-red-50 rounded-lg border-l-4 border-red-500">
-                    <i data-lucide="activity" class="h-6 w-6 text-red-700 mr-4 mt-1 flex-shrink-0"></i>
+                    <i data-lucide="heart-handshake" class="h-6 w-6 text-red-700 mr-4 mt-1 flex-shrink-0"></i>
                     <div>
-                        <h5 class="font-bold text-red-800">Priorité 2 : Santé & Qualité de Vie au Travail (QVT)</h5>
-                        <p class="text-gray-700">**Objectif :** Diminuer le taux d'absentéisme global sous la barre des 3%.<br> **Actions :** Lancer des campagnes de prévention sur la santé (TMS, RPS), analyser la charge de travail sur les postes clés, notamment au niveau de l'encadrement.</p>
+                        <h5 class="font-bold text-red-800">Priorité 2 : Analyse de l'Absentéisme & Soutien aux Collaborateurs</h5>
+                        <p class="text-gray-700"><strong>Analyse :</strong> Le taux d'absentéisme de 3,86% en 2024, bien qu'en hausse, doit être analysé avec discernement. Il est en grande partie influencé par un arrêt maladie de longue durée sur un poste clé en fin d'année. Ce contexte est crucial : il ne s'agit pas d'un indicateur de mal-être généralisé, mais du reflet de notre **engagement à soutenir nos collaborateurs lors d'épreuves personnelles**.<br>
+                        <strong>Objectif :</strong> Maintenir un faible taux d'absentéisme structurel et accompagner le retour de notre collaboratrice dans les meilleures conditions.
+                        </p>
                     </div>
                 </div>
                 <div class="flex items-start p-4 bg-purple-50 rounded-lg border-l-4 border-purple-500">
                     <i data-lucide="graduation-cap" class="h-6 w-6 text-purple-700 mr-4 mt-1 flex-shrink-0"></i>
                     <div>
                         <h5 class="font-bold text-purple-800">Priorité 3 : Développement des Compétences & Carrières</h5>
-                        <p class="text-gray-700">**Objectif :** Maintenir le budget formation et identifier les parcours d'évolution interne.<br> **Actions :** Construire une cartographie des compétences, planifier les entretiens professionnels, et identifier des potentiels féminins pour des postes à responsabilités.</p>
+                        <p class="text-gray-700"><strong>Objectif :** Maintenir le budget formation et identifier les parcours d'évolution interne.<br> **Actions :** Construire une cartographie des compétences, planifier les entretiens professionnels, et identifier des potentiels féminins pour des postes à responsabilités.</p>
                     </div>
                 </div>
             </div>
@@ -98,22 +106,17 @@
     <script>
         lucide.createIcons();
 
-        // --- DONNÉES TRAITÉES ---
         const years = ['2022', '2023', '2024'];
         const data = {
             turnover: [50.0, 8.3, 50.0],
             absenteisme: [null, 2.51, 3.86],
-            // DONNÉES CORRIGÉES pour la pyramide des âges, basées sur votre document source.
             pyramide: {
-                // De la tranche la plus jeune à la plus âgée
-                hommes: [2, 0, 1, 1, 0, 2], // 20-25, 25-30, 30-35, 40-45, 50-55, 55-60
-                femmes: [1, 1, 1, 2, 1, 0]  // 20-25, 25-30, 30-35, 40-45, 50-55, 55-60
+                hommes: [2, 0, 1, 1, 0, 2],
+                femmes: [1, 1, 1, 2, 1, 0]
             }
         };
-        // Inversion des données hommes pour l'effet pyramide
         const hommesDataPyramide = data.pyramide.hommes.map(v => -v);
 
-        // --- FONCTIONS DE CRÉATION DE GRAPHIQUES ---
         function createLineChart(canvasId, labels, datasets, yLabel = '') {
             const ctx = document.getElementById(canvasId).getContext('2d');
             new Chart(ctx, {
@@ -132,7 +135,6 @@
             new Chart(ctx, {
                 type: 'bar',
                 data: {
-                    // LABELS CORRIGÉS pour correspondre aux tranches du document source
                     labels: ['55-60', '50-55', '40-45', '30-35', '25-30', '20-25'],
                     datasets: [
                         { label: 'Hommes', data: hommesDataPyramide.reverse(), backgroundColor: '#3b82f6', barPercentage: 1.0, categoryPercentage: 0.9 },
@@ -147,23 +149,13 @@
                         tooltip: { callbacks: { label: c => `${c.dataset.label}: ${Math.abs(c.raw)}` } }
                     },
                     scales: {
-                        x: {
-                            stacked: true,
-                            ticks: {
-                                callback: v => Math.abs(v),
-                                stepSize: 1 // Forcer l'axe à n'afficher que des entiers
-                            }
-                        },
-                        y: {
-                            stacked: true,
-                            title: { display: true, text: "Tranches d'âge" }
-                        }
+                        x: { stacked: true, ticks: { callback: v => Math.abs(v), stepSize: 1 } },
+                        y: { stacked: true, title: { display: true, text: "Tranches d'âge" } }
                     }
                 }
             });
         }
 
-        // --- EXÉCUTION AU CHARGEMENT DE LA PAGE ---
         document.addEventListener('DOMContentLoaded', () => {
             createLineChart('turnoverChart', years, [
                 { data: data.turnover, borderColor: '#f97316', backgroundColor: '#f9731620', fill: true, tension: 0.4, pointRadius: 5 }
