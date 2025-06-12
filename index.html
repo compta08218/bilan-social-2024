@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rapport RSE - Analyse Sociale 2022-2024</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="bg-gray-100">
+
+    <div class="max-w-7xl mx-auto p-4 sm:p-6 lg:p-8">
+        <!-- En-tête -->
+        <header class="bg-white p-8 rounded-xl shadow-md mb-8">
+            <div class="flex items-center justify-center mb-4">
+                <i data-lucide="users" class="h-10 w-10 text-blue-600 mr-4"></i>
+                <h1 class="text-3xl sm:text-4xl font-bold text-gray-800 text-center">Tableau de Bord Social</h1>
+            </div>
+            <p class="text-center text-xl text-gray-600">Bilan 2024 & Perspectives 2025</p>
+        </header>
+
+        <!-- Section 1: LE PRÉSENT - Photo de l'entreprise à fin 2024 -->
+        <div class="bg-white p-6 rounded-xl shadow-md mb-8">
+            <h2 class="text-2xl font-bold text-center text-gray-800 mb-6">Le Présent : Situation au 31/12/2024</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+                <div class="p-4 border rounded-lg">
+                    <i data-lucide="user-check" class="h-8 w-8 text-blue-500 mx-auto mb-3"></i>
+                    <p class="text-3xl font-bold">12</p>
+                    <h3 class="text-sm font-semibold text-gray-600">Collaborateurs (ETP: 9,41)</h3>
+                </div>
+                <div class="p-4 border rounded-lg">
+                    <i data-lucide="venetian-mask" class="h-8 w-8 text-purple-500 mx-auto mb-3"></i>
+                    <p class="text-3xl font-bold">50%</p>
+                    <h3 class="text-sm font-semibold text-gray-600">Parité Hommes / Femmes</h3>
+                </div>
+                <div class="p-4 border rounded-lg">
+                    <i data-lucide="briefcase" class="h-8 w-8 text-green-500 mx-auto mb-3"></i>
+                    <p class="text-3xl font-bold">100%</p>
+                    <h3 class="text-sm font-semibold text-gray-600">Contrats en CDI</h3>
+                </div>
+                <div class="p-4 border rounded-lg">
+                    <i data-lucide="user-x" class="h-8 w-8 text-red-500 mx-auto mb-3"></i>
+                    <p class="text-3xl font-bold">3,86%</p>
+                    <h3 class="text-sm font-semibold text-gray-600">Taux d'Absentéisme</h3>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 2: LE PASSÉ - Évolution des indicateurs clés 2022-2024 -->
+        <div class="bg-white p-6 rounded-xl shadow-md mb-8">
+            <h2 class="text-2xl font-bold text-center text-gray-800 mb-6">Le Passé : Tendances sur 3 Ans</h2>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <div>
+                    <h3 class="text-lg font-semibold mb-4 text-center">Évolution du Turn-Over (%)</h3>
+                    <canvas id="turnoverChart"></canvas>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4 text-center">Évolution de l'Absentéisme (%)</h3>
+                    <canvas id="absenteismeChart"></canvas>
+                </div>
+            </div>
+            <div class="mt-8">
+                 <h3 class="text-lg font-semibold mb-4 text-center">Pyramide des Âges au 31/12/2024</h3>
+                 <canvas id="pyramideAgesChart" style="max-width: 800px; margin: auto;"></canvas>
+            </div>
+        </div>
+
+        <!-- Section 3: LE FUTUR - Plan d'action 2025 -->
+        <div class="bg-white p-6 rounded-xl shadow-md">
+            <h2 class="text-2xl font-bold text-center text-gray-800 mb-6">Le Futur : Objectifs & Plan d'Action 2025</h2>
+            <div class="space-y-4 max-w-4xl mx-auto">
+                <div class="flex items-start p-4 bg-yellow-50 rounded-lg border-l-4 border-yellow-500">
+                    <i data-lucide="heart-pulse" class="h-6 w-6 text-yellow-700 mr-4 mt-1 flex-shrink-0"></i>
+                    <div>
+                        <h5 class="font-bold text-yellow-800">Priorité 1 : Fidélisation & Stabilité</h5>
+                        <p class="text-gray-700">**Objectif :** Réduire le turn-over de 50% à moins de 15%.<br> **Actions :** Mettre en place des entretiens de départ systématiques, revoir le parcours d'intégration des nouvelles équipes, et lancer des enquêtes de satisfaction (pulse surveys).</p>
+                    </div>
+                </div>
+                <div class="flex items-start p-4 bg-red-50 rounded-lg border-l-4 border-red-500">
+                    <i data-lucide="activity" class="h-6 w-6 text-red-700 mr-4 mt-1 flex-shrink-0"></i>
+                    <div>
+                        <h5 class="font-bold text-red-800">Priorité 2 : Santé & Qualité de Vie au Travail (QVT)</h5>
+                        <p class="text-gray-700">**Objectif :** Diminuer le taux d'absentéisme global sous la barre des 3%.<br> **Actions :** Lancer des campagnes de prévention sur la santé (TMS, RPS), analyser la charge de travail sur les postes clés, notamment au niveau de l'encadrement.</p>
+                    </div>
+                </div>
+                <div class="flex items-start p-4 bg-purple-50 rounded-lg border-l-4 border-purple-500">
+                    <i data-lucide="graduation-cap" class="h-6 w-6 text-purple-700 mr-4 mt-1 flex-shrink-0"></i>
+                    <div>
+                        <h5 class="font-bold text-purple-800">Priorité 3 : Développement des Compétences & Carrières</h5>
+                        <p class="text-gray-700">**Objectif :** Maintenir le budget formation et identifier les parcours d'évolution interne.<br> **Actions :** Construire une cartographie des compétences, planifier les entretiens professionnels, et identifier des potentiels féminins pour des postes à responsabilités.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        lucide.createIcons();
+
+        // --- DONNÉES TRAITÉES ---
+        const years = ['2022', '2023', '2024'];
+        const data = {
+            turnover: [50.0, 8.3, 50.0],
+            absenteisme: [null, 2.51, 3.86],
+            // DONNÉES CORRIGÉES pour la pyramide des âges, basées sur votre document source.
+            pyramide: {
+                // De la tranche la plus jeune à la plus âgée
+                hommes: [2, 0, 1, 1, 0, 2], // 20-25, 25-30, 30-35, 40-45, 50-55, 55-60
+                femmes: [1, 1, 1, 2, 1, 0]  // 20-25, 25-30, 30-35, 40-45, 50-55, 55-60
+            }
+        };
+        // Inversion des données hommes pour l'effet pyramide
+        const hommesDataPyramide = data.pyramide.hommes.map(v => -v);
+
+        // --- FONCTIONS DE CRÉATION DE GRAPHIQUES ---
+        function createLineChart(canvasId, labels, datasets, yLabel = '') {
+            const ctx = document.getElementById(canvasId).getContext('2d');
+            new Chart(ctx, {
+                type: 'line',
+                data: { labels, datasets },
+                options: {
+                    responsive: true,
+                    plugins: { legend: { display: false } },
+                    scales: { y: { beginAtZero: true, ticks: { callback: v => v + yLabel } } }
+                }
+            });
+        }
+        
+        function createPyramidChart(canvasId) {
+            const ctx = document.getElementById(canvasId).getContext('2d');
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    // LABELS CORRIGÉS pour correspondre aux tranches du document source
+                    labels: ['55-60', '50-55', '40-45', '30-35', '25-30', '20-25'],
+                    datasets: [
+                        { label: 'Hommes', data: hommesDataPyramide.reverse(), backgroundColor: '#3b82f6', barPercentage: 1.0, categoryPercentage: 0.9 },
+                        { label: 'Femmes', data: data.pyramide.femmes.reverse(), backgroundColor: '#ec4899', barPercentage: 1.0, categoryPercentage: 0.9 }
+                    ]
+                },
+                options: {
+                    indexAxis: 'y',
+                    responsive: true,
+                    plugins: {
+                        legend: { position: 'top' },
+                        tooltip: { callbacks: { label: c => `${c.dataset.label}: ${Math.abs(c.raw)}` } }
+                    },
+                    scales: {
+                        x: {
+                            stacked: true,
+                            ticks: {
+                                callback: v => Math.abs(v),
+                                stepSize: 1 // Forcer l'axe à n'afficher que des entiers
+                            }
+                        },
+                        y: {
+                            stacked: true,
+                            title: { display: true, text: "Tranches d'âge" }
+                        }
+                    }
+                }
+            });
+        }
+
+        // --- EXÉCUTION AU CHARGEMENT DE LA PAGE ---
+        document.addEventListener('DOMContentLoaded', () => {
+            createLineChart('turnoverChart', years, [
+                { data: data.turnover, borderColor: '#f97316', backgroundColor: '#f9731620', fill: true, tension: 0.4, pointRadius: 5 }
+            ], '%');
+
+            createLineChart('absenteismeChart', years, [
+                { data: data.absenteisme, borderColor: '#ef4444', backgroundColor: '#ef444420', fill: true, tension: 0.4, pointRadius: 5, spanGaps: true }
+            ], '%');
+            
+            createPyramidChart('pyramideAgesChart');
+        });
+    </script>
+</body>
+</html>
